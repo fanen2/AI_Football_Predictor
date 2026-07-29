@@ -6,5 +6,17 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+@app.route("/today")
+def today():
+    return "<h1>Today's Matches Coming Soon...</h1>"
+
+@app.route("/tomorrow")
+def tomorrow():
+    return "<h1>Tomorrow's Matches Coming Soon...</h1>"
+
+@app.route("/all")
+def all_matches():
+    return "<h1>All Upcoming Matches Coming Soon...</h1>"
+
+if __name__=="__main__":
+    app.run(host="0.0.0.0",port=5000)
