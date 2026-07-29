@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Prediction</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>⚽ AI Football Predictor</h1>
+
+<h2>{{ match.home }} 🆚 {{ match.away }}</h2>
+
+</div>
+
+<div class="match-card">
+
+<h2>🏆 Match Result</h2>
+<p>{{ prediction.result }}</p>
+
+<h2>📊 Confidence</h2>
+<p>{{ prediction.confidence }}</p>
+
+<h2>⚽ Over 2.5 Goals</h2>
+<p>{{ prediction.over25 }}</p>
+
+<h2>🥅 Both Teams To Score</h2>
+<p>{{ prediction.gg }}</p>
+
+<h2>🎯 Correct Score</h2>
+<p>{{ prediction.score }}</p>
+
+<h2>⭐ Best Bet</h2>
+<p>{{ prediction.bestbet }}</p>
+
+</div>
+
+<div class="menu">
+
+<a href="/today">
+<button>⬅ Back to Matches</button>
+</a>
+
+</div>
+
+</body>
+
+</html>
