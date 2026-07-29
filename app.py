@@ -8,7 +8,25 @@ def home():
 
 @app.route("/today")
 def today():
-    return render_template("today.html")
+    matches = [
+        {
+            "home": "Arsenal",
+            "away": "Chelsea"
+        },
+        {
+            "home": "Liverpool",
+            "away": "Tottenham"
+        },
+        {
+            "home": "Manchester City",
+            "away": "Aston Villa"
+        }
+    ]
+
+    return render_template(
+        "today.html",
+        matches=matches
+    )
 
 @app.route("/tomorrow")
 def tomorrow():
@@ -18,5 +36,5 @@ def tomorrow():
 def all_matches():
     return "<h1>All Upcoming Matches Coming Soon...</h1>"
 
-if __name__=="__main__":
-    app.run(host="0.0.0.0",port=5000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
