@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Today's Matches</title>
+<html>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<head>
+
+<title>Today's Matches</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
@@ -14,29 +16,36 @@
 
 <h1>⚽ Today's Matches</h1>
 
-<p>Premier League Fixtures</p>
+<p>AI Football Predictor by Fanen</p>
 
 </div>
 
+{% for match in matches %}
+
 <div class="match-card">
 
-<h2>Today's fixtures will appear here.</h2>
-
-<p>In the next step, this page will automatically load today's Premier League matches from the API.</p>
+<h2>{{ match.home }} 🆚 {{ match.away }}</h2>
 
 <button class="predict-btn">
+
 Predict Match
+
 </button>
 
 </div>
 
+{% endfor %}
+
 <div class="menu">
 
 <a href="/">
+
 <button>⬅ Back Home</button>
+
 </a>
 
 </div>
 
 </body>
+
 </html>
