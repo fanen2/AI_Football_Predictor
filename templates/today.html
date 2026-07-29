@@ -26,12 +26,11 @@ href="{{ url_for('static', filename='style.css') }}">
 
 <h2>{{ match.home }} 🆚 {{ match.away }}</h2>
 
-<button class="predict-btn">
-
-Predict Match
-
-</button>
-
+<butt<a href="/predict/{{ match.id }}">
+    <button class="predict-btn">
+        Predict Match
+    </button>
+</a>.   
 </div>
 
 {% endfor %}
