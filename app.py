@@ -8,7 +8,7 @@ def home():
 
 @app.route("/today")
 def today():
-    return "<h1>Today's Matches Coming Soon...</h1>"
+    return render_template("today.html")
 
 @app.route("/tomorrow")
 def tomorrow():
