@@ -34,12 +34,18 @@ def predict(match_id):
     selected = matches[match_id - 1]
 
     prediction = {
-        "result": "Home Win",
+        "result": "🏠 Home Win",
         "confidence": "84%",
-        "over25": "YES",
+
+        "goal_market": "✅ Under 2.5 Goals",
+        "goal_confidence": "90%",
+
         "gg": "YES",
-        "score": "2 - 1",
-        "bestbet": "Home Win"
+        "gg_confidence": "82%",
+
+        "score": "2 - 0",
+
+        "bestbet": "⭐ Under 2.5 Goals"
     }
 
     return render_template(
@@ -47,6 +53,14 @@ def predict(match_id):
         match=selected,
         prediction=prediction
     )
+
+@app.route("/tomorrow")
+def tomorrow():
+    return "<h1>Tomorrow's Matches Coming Soon...</h1>"
+
+@app.route("/all")
+def all_matches():
+    return "<h1>All Upcoming Matches Coming Soon...</h1>"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
