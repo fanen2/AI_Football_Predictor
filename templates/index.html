@@ -2,9 +2,30 @@
 <html>
 <head>
     <title>AI Football Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-    <h1>⚽ AI Football Predictor</h1>
-    <p>Welcome! Our website is working.</p>
+
+<div class="container">
+
+<h1>⚽ AI Football Predictor</h1>
+
+<p>Powered by Artificial Intelligence</p>
+
+<a href="/today">
+<button>Today's Matches</button>
+</a>
+
+<a href="/tomorrow">
+<button>Tomorrow's Matches</button>
+</a>
+
+<a href="/all">
+<button>All Upcoming Matches</button>
+</a>
+
+</div>
+
 </body>
 </html>
