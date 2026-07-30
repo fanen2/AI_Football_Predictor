@@ -74,9 +74,31 @@ button:hover{
     box-shadow:0 2px 10px rgba(0,0,0,.4);
 }
 
+/* Match title */
+.match-card:first-of-type h2{
+    font-size:30px;
+    color:#FFD700;
+    line-height:1.4;
+}
+
+/* Section titles */
 .match-card h2{
     color:#FFD700;
-    margin-bottom:10px;
+    font-size:26px;
+    margin-bottom:12px;
+}
+
+/* Prediction result */
+.match-card h3{
+    font-size:22px;
+    color:white;
+    margin:8px 0;
+}
+
+/* Confidence text */
+.match-card p{
+    font-size:16px;
+    color:#d0d7de;
 }
 
 .predict-btn{
@@ -85,22 +107,4 @@ button:hover{
 
 .predict-btn:hover{
     background:#388bfd;
-}
-/* Prediction section titles */
-.prediction-card h2{
-    font-size: 30px;
-    font-weight: bold;
-    color: #FFD700;
-}
-
-/* Prediction values */
-.prediction-card p{
-    font-size: 20px;
-    color: white;
-}
-
-/* Confidence text */
-.prediction-card small{
-    font-size:16px;
-    color:#cccccc;
 }
