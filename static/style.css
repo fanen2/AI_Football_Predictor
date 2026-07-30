@@ -76,28 +76,28 @@ button:hover{
 
 /* Match title */
 .match-card:first-of-type h2{
-    font-size:30px;
+    font-size:22px;
     color:#FFD700;
-    line-height:1.4;
+    line-height:1.3;
 }
 
 /* Section titles */
 .match-card h2{
     color:#FFD700;
-    font-size:26px;
-    margin-bottom:12px;
+    font-size:18px;
+    margin-bottom:8px;
 }
 
 /* Prediction result */
 .match-card h3{
-    font-size:22px;
+    font-size:16px;
     color:white;
-    margin:8px 0;
+    margin:6px 0;
 }
 
 /* Confidence text */
 .match-card p{
-    font-size:16px;
+    font-size:14px;
     color:#d0d7de;
 }
 
