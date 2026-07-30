@@ -54,3 +54,62 @@ all_teams = pd.concat([
 team_encoder.fit(all_teams)
 
 print("Team Encoder Ready!")
+def predict_match(home_team, away_team):
+
+    print("===================================")
+    print("Starting AI Prediction...")
+    print(home_team, "vs", away_team)
+    print("===================================")
+def predict_match(home_team, away_team):
+
+    print("===================================")
+    print("Starting AI Prediction...")
+    print(home_team, "vs", away_team)
+    print("===================================")
+
+    # Map Team Names
+    home_team = TEAM_MAP.get(home_team, home_team)
+    away_team = TEAM_MAP.get(away_team, away_team)
+
+    print("Mapped Teams:")
+    print(home_team, "vs", away_team)
+
+    # Load Latest Team Records
+    home_record = data[
+        data["HomeTeam"] == home_team
+    ].iloc[-1]
+
+    away_record = data[
+        data["AwayTeam"] == away_team
+    ].iloc[-1]
+
+    print("Historical Data Loaded Successfully!")
+print("Historical Data Loaded Successfully!")
+print("Building AI Feature Vector...")
+
+feature_vector = pd.DataFrame([{
+    "HomeTeam": team_encoder.transform([home_team])[0],
+    "AwayTeam": team_encoder.transform([away_team])[0],
+
+    "HomeRecentPoints": home_record["HomeRecentPoints"],
+    "AwayRecentPoints": away_record["AwayRecentPoints"],
+
+    "HomeWinRate": home_record["HomeWinRate"],
+    "AwayWinRate": away_record["AwayWinRate"],
+
+    "H2HHomeWins": home_record["H2HHomeWins"],
+    "H2HAwayWins": home_record["H2HAwayWins"],
+    "H2HDraws": home_record["H2HDraws"],
+    "H2HGoalsAvg": home_record["H2HGoalsAvg"],
+
+    "HomeAttackStrength": home_record["HomeAttackStrength"],
+    "AwayAttackStrength": away_record["AwayAttackStrength"],
+
+    "HomeDefenseStrength": home_record["HomeDefenseStrength"],
+    "AwayDefenseStrength": away_record["AwayDefenseStrength"],
+
+    "ExpectedHomeGoals": home_record["ExpectedHomeGoals"],
+    "ExpectedAwayGoals": away_record["ExpectedAwayGoals"]
+}])
+
+print("Feature Vector Created Successfully!")
