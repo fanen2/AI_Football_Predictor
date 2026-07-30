@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from ai_predictor import predict_match
 import requests
 from datetime import datetime
 
