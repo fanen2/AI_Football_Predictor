@@ -4,7 +4,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AI Football Predictor by Fanen</title>
@@ -22,68 +21,69 @@ href="{{ url_for('static', filename='style.css') }}">
 
 <h2>by Fanen</h2>
 
-<p>"Smart Predictions Powered by Artificial Intelligence"</p>
+<p>Smart Predictions Powered by Artificial Intelligence</p>
 
 </div>
 
 <div class="match-card">
-
 <h2>{{ match.home }} 🆚 {{ match.away }}</h2>
-
 </div>
 
-<div class="match-card">
+<hr class="divider">
 
+<div class="match-card">
 <h2>🏆 Match Result</h2>
-
 <h3>{{ prediction.result }}</h3>
-
-<p><strong>Confidence:</strong> {{ prediction.confidence }}</p>
-
+<p>Confidence: {{ prediction.confidence }}</p>
 </div>
 
-<div class="match-card">
+<hr class="divider">
 
+<div class="match-card">
 <h2>⚽ Goals Prediction</h2>
-
 <h3>{{ prediction.goal_market }}</h3>
-
-<p><strong>Confidence:</strong> {{ prediction.goal_confidence }}</p>
-
+<p>Confidence: {{ prediction.goal_confidence }}</p>
 </div>
 
-<div class="match-card">
+<hr class="divider">
 
+<div class="match-card">
 <h2>🥅 Both Teams To Score</h2>
-
 <h3>{{ prediction.gg }}</h3>
-
-<p><strong>Confidence:</strong> {{ prediction.gg_confidence }}</p>
-
+<p>Confidence: {{ prediction.gg_confidence }}</p>
 </div>
 
-<div class="match-card">
+<hr class="divider">
 
+<div class="match-card">
 <h2>🎯 Correct Score</h2>
-
 <h3>{{ prediction.score }}</h3>
-
 </div>
+
+<hr class="divider">
+
+<div class="match-card">
+<h2>⭐ AI Best Prediction</h2>
+<h3>{{ prediction.bestbet }}</h3>
+</div>
+
+<hr class="divider">
 
 <div class="match-card">
 
-<h2>⭐ AI Best Bet</h2>
+<h2>💡 Motivation</h2>
 
-<h3>{{ prediction.bestbet }}</h3>
+<p>
+Believe in the process, not the promise.<br>
+Every prediction is an opportunity, not a guarantee.
+</p>
 
 </div>
 
 <div class="menu">
 
 <a href="/today">
-
 <button>⬅ Back to Today's Matches</button>
-
 </a>
 
 </div>
