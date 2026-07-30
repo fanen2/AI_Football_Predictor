@@ -113,3 +113,39 @@ feature_vector = pd.DataFrame([{
 }])
 
 print("Feature Vector Created Successfully!")
+print("Feature Vector Created Successfully!")
+print("Running AI Models...")
+
+# Match Result
+match_prediction = match_ai.predict(feature_vector)[0]
+match_prediction = match_result_encoder.inverse_transform(
+    [match_prediction]
+)[0]
+match_probability = match_ai.predict_proba(feature_vector)[0]
+match_confidence = round(max(match_probability) * 100, 2)
+
+# Over 2.5
+over25_prediction = over25_ai.predict(feature_vector)[0]
+over25_probability = over25_ai.predict_proba(feature_vector)[0]
+over25_confidence = round(max(over25_probability) * 100, 2)
+
+# Over 3.5
+over35_prediction = over35_ai.predict(feature_vector)[0]
+over35_probability = over35_ai.predict_proba(feature_vector)[0]
+over35_confidence = round(max(over35_probability) * 100, 2)
+
+# BTTS
+btts_prediction = btts_ai.predict(feature_vector)[0]
+btts_probability = btts_ai.predict_proba(feature_vector)[0]
+btts_confidence = round(max(btts_probability) * 100, 2)
+
+# Correct Score
+correct_prediction = correct_score_ai.predict(feature_vector)[0]
+correct_probability = correct_score_ai.predict_proba(feature_vector)[0]
+correct_confidence = round(max(correct_probability) * 100, 2)
+
+correct_score = correct_score_encoder.inverse_transform(
+    [correct_prediction]
+)[0]
+
+print("AI Prediction Completed!")
