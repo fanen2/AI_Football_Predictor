@@ -86,3 +86,21 @@ button:hover{
 .predict-btn:hover{
     background:#388bfd;
 }
+/* Prediction section titles */
+.prediction-card h2{
+    font-size: 30px;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+/* Prediction values */
+.prediction-card p{
+    font-size: 20px;
+    color: white;
+}
+
+/* Confidence text */
+.prediction-card small{
+    font-size:16px;
+    color:#cccccc;
+}
