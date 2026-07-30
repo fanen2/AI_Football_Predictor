@@ -149,3 +149,51 @@ correct_score = correct_score_encoder.inverse_transform(
 )[0]
 
 print("AI Prediction Completed!")
+result_map = {
+    "H": "🏠 Home Win",
+    "D": "🤝 Draw",
+    "A": "✈ Away Win"
+}
+
+goal_map = {
+    0: "❌ Under 2.5",
+    1: "✅ Over 2.5"
+}
+
+goal35_map = {
+    0: "❌ Under 3.5",
+    1: "✅ Over 3.5"
+}
+
+btts_map = {
+    0: "NO",
+    1: "YES"
+}
+
+best_bet = "Match Result"
+best_confidence = match_confidence
+
+if over25_confidence > best_confidence:
+    best_bet = "Over 2.5"
+    best_confidence = over25_confidence
+
+if over35_confidence > best_confidence:
+    best_bet = "Over 3.5"
+    best_confidence = over35_confidence
+
+if btts_confidence > best_confidence:
+    best_bet = "BTTS"
+    best_confidence = btts_confidence
+
+return {
+    "result": result_map.get(match_prediction, match_prediction),
+    "confidence": f"{match_confidence} %",
+    "goal_market": goal_map[over25_prediction],
+    "goal_confidence": f"{over25_confidence} %",
+    "goal35": goal35_map[over35_prediction],
+    "goal35_confidence": f"{over35_confidence} %",
+    "gg": btts_map[btts_prediction],
+    "gg_confidence": f"{btts_confidence} %",
+    "score": correct_score,
+    "bestbet": best_bet
+}
