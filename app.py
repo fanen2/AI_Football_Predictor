@@ -82,20 +82,10 @@ def predict(match_id):
 
     selected = matches[match_id - 1]
 
-    prediction = {
-        "result": "Loading AI...",
-        "confidence": "",
-
-        "goal_market": "",
-        "goal_confidence": "",
-
-        "gg": "",
-        "gg_confidence": "",
-
-        "score": "",
-
-        "bestbet": ""
-    }
+    prediction = predict_match(
+    selected["home"],
+    selected["away"]
+)
 
     return render_template(
         "predict.html",
