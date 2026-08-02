@@ -33,7 +33,9 @@ print("=" * 50)
 # LOAD DATASET
 # ==========================
 
-data = pd.read_csv("final_ai_dataset.csv").dropna()
+data = pd.read_csv(
+    "final_ai_dataset.csv"
+).dropna()
 
 print("Dataset Loaded Successfully!")
 
@@ -41,32 +43,19 @@ print("Dataset Loaded Successfully!")
 # LOAD AI MODELS
 # ==========================
 
-match_ai = joblib.load("match_result_ai_v6.pkl"
-)
+match_ai = joblib.load("match_result_ai_v6.pkl")
 
-match_result_encoder = joblib.load(
-    "/storage/emulated/0/Download/match_result_encoder_v6.pkl"
-)
+match_result_encoder = joblib.load("match_result_encoder_v6.pkl")
 
-over25_ai = joblib.load(
-    "/storage/emulated/0/Download/over25_ai_v1.pkl"
-)
+over25_ai = joblib.load("over25_ai_v1.pkl")
 
-over35_ai = joblib.load(
-    "/storage/emulated/0/Download/over35_ai_v1.pkl"
-)
+over35_ai = joblib.load("over35_ai_v1.pkl")
 
-btts_ai = joblib.load(
-    "/storage/emulated/0/Download/btts_ai_v1.pkl"
-)
+btts_ai = joblib.load("btts_ai_v1.pkl")
 
-correct_score_ai = joblib.load(
-    "/storage/emulated/0/Download/correct_score_ai_v2.pkl"
-)
+correct_score_ai = joblib.load("correct_score_ai_v2.pkl")
 
-correct_score_encoder = joblib.load(
-    "/storage/emulated/0/Download/correct_score_encoder_v2.pkl"
-)
+correct_score_encoder = joblib.load("correct_score_encoder_v2.pkl")
 
 print("All AI Models Loaded Successfully!")
 
@@ -164,7 +153,7 @@ def predict_match(home_team, away_team):
     }])
 
     print("Feature Vector Created Successfully!")
-    # ==========================
+     # ==========================
     # MATCH RESULT AI
     # ==========================
 
