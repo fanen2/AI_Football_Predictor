@@ -33,9 +33,7 @@ print("=" * 50)
 # LOAD DATASET
 # ==========================
 
-data = pd.read_csv(
-    "/storage/emulated/0/Download/final_ai_dataset.csv"
-).dropna()
+data = pd.read_csv("final_ai_dataset.csv").dropna()
 
 print("Dataset Loaded Successfully!")
 
