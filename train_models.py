@@ -19,6 +19,7 @@ print("=" * 60)
 print("\nLoading Dataset...")
 
 data = pd.read_csv("final_ai_dataset.csv")
+print(data.columns.tolist())
 
 data = data.dropna()
 
