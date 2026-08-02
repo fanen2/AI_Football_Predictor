@@ -18,9 +18,7 @@ print("=" * 60)
 
 print("\nLoading Dataset...")
 
-data = pd.read_csv(
-    "/storage/emulated/0/Download/final_ai_dataset.csv"
-)
+data = pd.read_csv("final_ai_dataset.csv")
 
 data = data.dropna()
 
