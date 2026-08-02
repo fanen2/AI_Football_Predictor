@@ -12,7 +12,57 @@ headers = {
 }
 
 
-def get_today_matches():
+def get_matches(day_offset=0):
+
+    url = "https://api.football-data.org/v4/competitions/PL/matches"
+
+    response = requests.get(url, headers=headers)
+
+    if response.status_code != 200:
+        return []
+
+    data = response.json()
+
+    dates = sorted(
+        list(
+            set(
+                datetime.fromisoformat(
+                    m["utcDate"].replace("Z", "+00:00")
+                ).date()
+                for m in data["matches"]
+            )
+        )
+    )
+
+    if len(dates) == 0:
+        return []
+
+    if day_offset >= len(dates):
+        return []
+
+    target_day = dates[day_offset]
+
+    fixtures = []
+
+    match_id = 1
+
+    for match in data["matches"]:
+
+        match_date = datetime.fromisoformat(
+            match["utcDate"].replace("Z", "+00:00")
+        ).date()
+
+        if match_date == target_day:
+
+            fixtures.append({
+                "id": match_id,
+                "home": match["homeTeam"]["name"],
+                "away": match["awayTeam"]["name"]
+            })
+
+            match_id += 1
+
+    return fixtures
 
     url = "https://api.football-data.org/v4/competitions/PL/matches"
 
@@ -49,10 +99,14 @@ def get_today_matches():
         if match_date == today:
 
             fixtures.append({
-                "id": match_id,
-                "home": match["homeTeam"]["name"],
-                "away": match["awayTeam"]["name"]
-            })
+    "id": match_id,
+    "home": match["homeTeam"]["name"],
+    "away": match["awayTeam"]["name"],
+    "date": str(match_date),
+    "time": datetime.fromisoformat(
+        match["utcDate"].replace("Z", "+00:00")
+    ).strftime("%H:%M UTC")
+})
 
             match_id += 1
 
@@ -67,7 +121,7 @@ def home():
 @app.route("/today")
 def today():
 
-    matches = get_today_matches()
+    matches = get_matches(0)
 
     return render_template(
         "today.html",
@@ -96,12 +150,28 @@ def predict(match_id):
 
 @app.route("/tomorrow")
 def tomorrow():
-    return "<h1>Tomorrow Matches Coming Soon...</h1>"
+
+    matches = get_matches(1)
+
+    return render_template(
+        "today.html",
+        matches=matches
+    )
 
 
 @app.route("/all")
 def all_matches():
-    return "<h1>Upcoming Matches Coming Soon...</h1>"
+
+    matches = []
+
+    matches.extend(get_matches(0))
+    matches.extend(get_matches(1))
+    matches.extend(get_matches(2))
+
+    return render_template(
+        "today.html",
+        matches=matches
+    )
 
 
 if __name__ == "__main__":
