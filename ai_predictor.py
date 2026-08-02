@@ -33,9 +33,7 @@ print("=" * 50)
 # LOAD DATASET
 # ==========================
 
-data = pd.read_csv(
-    "/storage/emulated/0/Download/final_ai_dataset.csv"
-).dropna()
+data = pd.read_csv("final_ai_dataset.csv").dropna()
 
 print("Dataset Loaded Successfully!")
 
@@ -43,8 +41,7 @@ print("Dataset Loaded Successfully!")
 # LOAD AI MODELS
 # ==========================
 
-match_ai = joblib.load(
-    "/storage/emulated/0/Download/match_result_ai_v6.pkl"
+match_ai = joblib.load("match_result_ai_v6.pkl"
 )
 
 match_result_encoder = joblib.load(
