@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Football Predictor by Fanen</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>⚽ AI Football Predictor</h1>
+
+<h2>by Fanen</h2>
+
+<p>Smart Predictions Powered by Artificial Intelligence</p>
+
+</div>
+
+<div class="match-card">
+<h2>{{ match.home }} 🆚 {{ match.away }}</h2>
+</div>
+
+<hr class="divider">
+
+<div class="match-card">
+<h2>🏆 Match Result</h2>
+<h3>{{ prediction.result }}</h3>
+<p>Confidence: {{ prediction.confidence }}</p>
+</div>
+
+<hr class="divider">
+
+<div class="match-card">
+<h2>⚽ Over 2.5 Goals</h2>
+<h3>{{ prediction.goal_market }}</h3>
+<p>Confidence: {{ prediction.goal_confidence }}</p>
+
+<h2>⚽ Over 3.5 Goals</h2>
+<h3>{{ prediction.goal35 }}</h3>
+<p>Confidence: {{ prediction.goal35_confidence }}</p>
+</div>
+
+<hr class="divider">
+
+<div class="match-card">
+<h2>🥅 Both Teams To Score</h2>
+<h3>{{ prediction.gg }}</h3>
+<p>Confidence: {{ prediction.gg_confidence }}</p>
+</div>
+
+<hr class="divider">
+
+<div class="match-card">
+<h2>🎯 Correct Score</h2>
+<h3>{{ prediction.score }}</h3>
+<p>Confidence: {{ prediction.score_confidence }}</p>
+</div>
+
+<hr class="divider">
+
+<div class="match-card">
+<h2>⭐ AI Best Prediction</h2>
+<h3>{{ prediction.bestbet }}</h3>
+<p>Confidence: {{ prediction.bestbet_confidence }}</p>
+</div>
+
+<hr class="divider">
+
+<div class="match-card">
+
+<h2>💡 Motivation</h2>
+
+<p>
+Believe in the process, not the promise.<br>
+Every prediction is an opportunity, not a guarantee.
+</p>
+
+</div>
+
+<div class="menu">
+
+<a href="/today">
+<button>⬅ Back to Today's Matches</button>
+</a>
+
+</div>
+
+<div class="footer">
+
+<p>© 2026 AI Football Predictor by Fanen</p>
+
+</div>
+
+</body>
+
+</html>
