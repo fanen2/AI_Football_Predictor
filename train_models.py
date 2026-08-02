@@ -18,12 +18,13 @@ print("=" * 60)
 
 print("\nLoading Dataset...")
 
+print("=== TEST VERSION 999 ===")
+
 data = pd.read_csv("final_ai_dataset.csv")
 
 print("Columns found:")
 print(data.columns.tolist())
 
-print("First 5 rows:")
 print(data.head())
 
 data = data.dropna()
