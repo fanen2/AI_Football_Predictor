@@ -1,7 +1,52 @@
 from flask import Flask, render_template
-from ai_predictor import predict_match
+import os
+import subprocess
 import requests
 from datetime import datetime
+# ==========================================
+# CHECK AI MODELS
+# ==========================================
+
+required_models = [
+
+    "match_result_ai_v6.pkl",
+    "match_result_encoder_v6.pkl",
+
+    "over25_ai_v1.pkl",
+    "over35_ai_v1.pkl",
+
+    "btts_ai_v1.pkl",
+
+    "correct_score_ai_v2.pkl",
+    "correct_score_encoder_v2.pkl",
+
+    "team_encoder.pkl"
+
+]
+
+missing = False
+
+for model in required_models:
+
+    if not os.path.exists(model):
+        missing = True
+        break
+
+if missing:
+
+    print("=" * 60)
+    print("AI Models Not Found")
+    print("Training AI Models...")
+    print("=" * 60)
+
+    subprocess.run(
+        ["python", "train_models.py"],
+        check=True
+    )
+
+    print("Training Completed!")
+
+from ai_predictor import predict_match
 
 app = Flask(__name__)
 
@@ -132,30 +177,22 @@ def today():
 @app.route("/predict/<int:match_id>")
 def predict(match_id):
 
-    matches = get_today_matches()
+    matches = get_matches(0)
+
+    if match_id < 1 or match_id > len(matches):
+        return "Match not found"
 
     selected = matches[match_id - 1]
 
     prediction = predict_match(
-    selected["home"],
-    selected["away"]
-)
+        selected["home"],
+        selected["away"]
+    )
 
     return render_template(
         "predict.html",
         match=selected,
         prediction=prediction
-    )
-
-
-@app.route("/tomorrow")
-def tomorrow():
-
-    matches = get_matches(1)
-
-    return render_template(
-        "today.html",
-        matches=matches
     )
 
 
