@@ -93,21 +93,21 @@ def get_matches(day_offset=0):
 
     for match in data["matches"]:
 
-        match_date = datetime.fromisoformat(
-            match["utcDate"].replace("Z", "+00:00")
-        ).date()
+    match_date = datetime.fromisoformat(
+        match["utcDate"].replace("Z", "+00:00")
+    ).date()
 
-        if match_date == target_day:
+    if match_date == target_day:
 
-            print(match["homeTeam"]["name"], "vs", match["awayTeam"]["name"])
+        print(match["homeTeam"]["name"], "vs", match["awayTeam"]["name"])
 
-fixtures.append({
-    "id": match_id,
-    "home": match["homeTeam"]["name"],
-    "away": match["awayTeam"]["name"]
-})
+        fixtures.append({
+            "id": match_id,
+            "home": match["homeTeam"]["name"],
+            "away": match["awayTeam"]["name"]
+        })
 
-            match_id += 1
+        match_id += 1
 
     return fixtures
 
