@@ -99,11 +99,13 @@ def get_matches(day_offset=0):
 
         if match_date == target_day:
 
-            fixtures.append({
-                "id": match_id,
-                "home": match["homeTeam"]["name"],
-                "away": match["awayTeam"]["name"]
-            })
+            print(match["homeTeam"]["name"], "vs", match["awayTeam"]["name"])
+
+fixtures.append({
+    "id": match_id,
+    "home": match["homeTeam"]["name"],
+    "away": match["awayTeam"]["name"]
+})
 
             match_id += 1
 
