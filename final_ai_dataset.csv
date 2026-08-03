@@ -1,5 +1,0 @@
-import pandas as pd
-
-data = pd.read_csv("/storage/emulated/0/Download/final_ai_dataset.csv")
-
-print(data.columns.tolist())
