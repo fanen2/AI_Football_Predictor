@@ -33,8 +33,11 @@ body{
 .match-card{
     width:88%;
     max-width:520px;
-    margin:8px auto;
-    padding:6px 2px;
+    margin:15px auto;
+    padding:18px;
+    background:#161b22;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,.35);
 }
 
 .match-card:first-of-type h2{
@@ -86,21 +89,25 @@ button{
     border:none;
     border-radius:10px;
     cursor:pointer;
-    background:#238636;
     color:white;
     transition:.3s;
+    margin-top:10px;
 }
 
-button:hover{
+/* Home page buttons */
+.menu button{
+    background:#238636;
+}
+
+.menu button:hover{
     background:#2ea043;
 }
 
-.footer{
-    width:88%;
-    max-width:520px;
-    margin:25px auto;
-    text-align:center;
-    color:#8b949e;
-    font-size:13px;
-    line-height:1.6;
+/* Predict button */
+.predict-btn{
+    background:#1f6feb;
+}
+
+.predict-btn:hover{
+    background:#388bfd;
 }
