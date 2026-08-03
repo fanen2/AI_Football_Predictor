@@ -93,67 +93,19 @@ def get_matches(day_offset=0):
 
     for match in data["matches"]:
 
-    match_date = datetime.fromisoformat(
-        match["utcDate"].replace("Z", "+00:00")
-    ).date()
-
-    if match_date == target_day:
-
-        print(match["homeTeam"]["name"], "vs", match["awayTeam"]["name"])
-
-        fixtures.append({
-            "id": match_id,
-            "home": match["homeTeam"]["name"],
-            "away": match["awayTeam"]["name"]
-        })
-
-        match_id += 1
-
-    return fixtures
-
-    url = "https://api.football-data.org/v4/competitions/PL/matches"
-
-    response = requests.get(url, headers=headers)
-
-    if response.status_code != 200:
-        return []
-
-    data = response.json()
-
-    dates = sorted(
-        list(
-            set(
-                datetime.fromisoformat(
-                    m["utcDate"].replace("Z", "+00:00")
-                ).date()
-                for m in data["matches"]
-            )
-        )
-    )
-
-    today = dates[0]
-
-    fixtures = []
-
-    match_id = 1
-
-    for match in data["matches"]:
-
         match_date = datetime.fromisoformat(
             match["utcDate"].replace("Z", "+00:00")
         ).date()
 
-        if match_date == today:
+        if match_date == target_day:
+
+            print(match["homeTeam"]["name"], "vs", match["awayTeam"]["name"])
 
             fixtures.append({
-    "id": match_id,
-    "home": match["homeTeam"]["name"],
-    "away": match["awayTeam"]["name"],
-    "date": str(match_date),
-    "time": datetime.fromisoformat(
-        match["utcDate"].replace("Z", "+00:00")
-    ).strftime("%H:%M UTC")
-})
+                "id": match_id,
+                "home": match["homeTeam"]["name"],
+                "away": match["awayTeam"]["name"]
+            })
 
             match_id += 1
 
@@ -185,7 +137,7 @@ def predict(match_id):
         return "Match not found"
 
     selected = matches[match_id - 1]
-
+    
     prediction = predict_match(
         selected["home"],
         selected["away"]
@@ -196,7 +148,6 @@ def predict(match_id):
         match=selected,
         prediction=prediction
     )
-
 
 @app.route("/all")
 def all_matches():
