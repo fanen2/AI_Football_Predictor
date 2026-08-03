@@ -138,10 +138,12 @@ def predict(match_id):
 
     selected = matches[match_id - 1]
     
-    prediction = predict_match(
+    try:prediction = predict_match(
         selected["home"],
         selected["away"]
     )
+    except Exception as e:
+     return f"Prediction Error: {e}"
 
     return render_template(
         "predict.html",
