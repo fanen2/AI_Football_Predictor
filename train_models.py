@@ -3,7 +3,7 @@ import joblib
 
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import HistGradientBoostingClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
@@ -18,14 +18,10 @@ print("=" * 60)
 
 print("\nLoading Dataset...")
 
-print("=== TEST VERSION 999 ===")
-
 data = pd.read_csv("final_ai_dataset.csv")
-
-print("Columns found:")
 print(data.columns.tolist())
-
 print(data.head())
+print("Rows:", len(data))
 
 data = data.dropna()
 
@@ -119,11 +115,11 @@ X_train, X_test, y_train, y_test = train_test_split(
     stratify=y
 )
 
-match_model = HistGradientBoostingClassifier(
-    learning_rate=0.05,
-    max_depth=8,
-    max_iter=300,
-    random_state=42
+match_model = RandomForestClassifier(
+    n_estimators=500,
+    max_depth=15,
+    random_state=42,
+    n_jobs=-1
 )
 
 match_model.fit(X_train, y_train)
