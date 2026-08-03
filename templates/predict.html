@@ -40,9 +40,13 @@ href="{{ url_for('static', filename='style.css') }}">
 <hr class="divider">
 
 <div class="match-card">
-<h2>⚽ Goals Prediction</h2>
+<h2>⚽ Over 2.5 Goals</h2>
 <h3>{{ prediction.goal_market }}</h3>
 <p>Confidence: {{ prediction.goal_confidence }}</p>
+
+<h2>⚽ Over 3.5 Goals</h2>
+<h3>{{ prediction.goal35 }}</h3>
+<p>Confidence: {{ prediction.goal35_confidence }}</p>
 </div>
 
 <hr class="divider">
@@ -58,6 +62,7 @@ href="{{ url_for('static', filename='style.css') }}">
 <div class="match-card">
 <h2>🎯 Correct Score</h2>
 <h3>{{ prediction.score }}</h3>
+<p>Confidence: {{ prediction.score_confidence }}</p>
 </div>
 
 <hr class="divider">
@@ -65,6 +70,7 @@ href="{{ url_for('static', filename='style.css') }}">
 <div class="match-card">
 <h2>⭐ AI Best Prediction</h2>
 <h3>{{ prediction.bestbet }}</h3>
+<p>Confidence: {{ prediction.bestbet_confidence }}</p>
 </div>
 
 <hr class="divider">
